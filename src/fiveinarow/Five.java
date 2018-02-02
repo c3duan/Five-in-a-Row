@@ -10,6 +10,7 @@ public class Five extends JApplet {
     private static final Color[] PLAYER_COLOR = {null, Color.BLACK, Color.WHITE};
     private static final String[] PLAYER_NAME = {null, "BLACK", "WHITE"};
 
+    private static boolean useUndo = false;
 
     private GameBoard  boardDisplay;
     private JTextField statusField = new JTextField();
@@ -42,11 +43,19 @@ public class Five extends JApplet {
         this.add(statusField, BorderLayout.SOUTH);
 
         newGameButton.addActionListener(new NewGameAction());
+        undoButton.addActionListener(new UndoAction());
     }
 
     private class NewGameAction implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             gameLogic.reset();
+            boardDisplay.repaint();
+        }
+    }
+
+    private class UndoAction implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            gameLogic.undo();
             boardDisplay.repaint();
         }
     }

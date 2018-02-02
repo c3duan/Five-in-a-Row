@@ -1,4 +1,5 @@
 package fiveinarow;
+import java.util.*;
 
 class FiveModel {
     public static final int EMPTY = 0;
@@ -9,6 +10,9 @@ class FiveModel {
     private int maxCols;
 
     private int[][] board;
+    private Stack<Integer> record = new Stack<Integer>();
+    private int lastR;
+    private int lastC;
     private int nextPlayer;
     private int moves = 0;
 
@@ -38,17 +42,25 @@ class FiveModel {
         move(maxCols / 2, maxRows / 2);
     }
 
+    public void undo() {
+        board[lastR][lastC] = EMPTY;
+        nextPlayer =  3 - nextPlayer;
+        moves =- 1;
+    }
+
     public void move(int r, int c) {
         assert board[r][c] == EMPTY;
         board[r][c] = nextPlayer;
         nextPlayer = 3 - nextPlayer;
         moves++;
+        lastR = r;
+        lastC = c;
     }
 
     private boolean count5(int r, int dr, int c , int dc) {
         int player = board[r][c];
         for (int i = 0; i < 5; i++) {
-            if (r + dr * i >= maxRows || r + dr * i < 0 || c + dc * i >= maxCols || c + dc * 1 < 0) {
+            if (r + dr * i >= maxRows || r + dr * i < 0 || c + dc * i >= maxCols || c + dc * i < 0) {
                 return false;
             }
             if (board[r + dr * i][c + dc * i] != player) {
