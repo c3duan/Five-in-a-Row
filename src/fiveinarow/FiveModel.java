@@ -1,5 +1,4 @@
 package fiveinarow;
-import java.util.*;
 
 class FiveModel {
     public static final int EMPTY = 0;
@@ -10,7 +9,6 @@ class FiveModel {
     private int maxCols;
 
     private int[][] board;
-    private Stack<Integer> record = new Stack<Integer>();
     private int lastR;
     private int lastC;
     private int nextPlayer;

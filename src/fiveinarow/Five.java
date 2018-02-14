@@ -10,8 +10,6 @@ public class Five extends JApplet {
     private static final Color[] PLAYER_COLOR = {null, Color.BLACK, Color.WHITE};
     private static final String[] PLAYER_NAME = {null, "BLACK", "WHITE"};
 
-    private static boolean useUndo = false;
-
     private GameBoard  boardDisplay;
     private JTextField statusField = new JTextField();
     private FiveModel gameLogic = new FiveModel(ROWS, COLS);
