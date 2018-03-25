@@ -22,7 +22,7 @@ class FiveModel {
     }
 
     public int getNextPlayer() {
-        return nextPlayer;
+        return this.nextPlayer;
     }
 
     public int getPlayerAt(int r, int c) {
@@ -67,6 +67,21 @@ class FiveModel {
         }
         return true;
     }
+
+    /*public int computerTurn(int depth) {
+        return ai(this.board, depth);
+    }*/
+
+    public int[][] getCurrentCopyBoard() {
+        int[][]copyBoard = new int[this.board.length][this.board[0].length];
+        for(int i = 0; i < this.board.length;  i++) {
+            for(int j = 0; j < this.board[i].length; j++) {
+                copyBoard[i][j] = this.board[i][j];
+            }
+        }
+        return copyBoard;
+    }
+
 
     public int getGameStatus() {
         int row, col;
