@@ -1,5 +1,6 @@
 package fiveinarow;
 
+/* Interface for AI using miniMax */
 public interface AI {
     public int heuristic(int board[][]);
     public int miniMax(int board[][], int depth, int turn);
